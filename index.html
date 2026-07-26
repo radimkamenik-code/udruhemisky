@@ -44,7 +44,7 @@
   .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
 
   /* ---------- header ---------- */
-  header{padding:24px 0; border-bottom:1px solid var(--line);}
+  header{padding:24px 0; border-bottom:1px solid var(--line); position:relative;}
   .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
   .brand{display:flex; align-items:flex-end; gap:12px;}
   .brand-mark{font-family:'Fraunces', serif; font-weight:600; font-size:21px; line-height:1; display:inline-block; transform:translateY(3px);}
@@ -192,6 +192,7 @@
   .contact-detail a:hover{border-color:var(--ink);}
 
   footer{padding:30px 24px 50px; text-align:center; color:var(--ink-soft); font-size:13.5px; max-width:600px; margin:0 auto; line-height:1.6;}
+  .bottom-spacer{height:45vh;}
 
   @media (max-width:760px){
     .hero-top{grid-template-columns:1fr; gap:56px;}
@@ -209,8 +210,10 @@
     nav{display:none;}
     .nav-toggle{display:flex;}
     .mobile-nav{
+      position:absolute; top:100%; left:0; right:0; z-index:20;
       display:flex; flex-direction:column; max-height:0; overflow:hidden;
-      transition:max-height .25s ease;
+      background:var(--cream); transition:max-height .25s ease;
+      box-shadow:0 8px 16px rgba(43,33,24,.08);
     }
     .mobile-nav.open{max-height:300px; border-top:1px solid var(--line);}
     .mobile-nav a{
@@ -481,16 +484,25 @@
   U druhé misky &middot; domácí hlídání psů &middot; Struhařov u Říčan
 </footer>
 
+<div class="bottom-spacer" aria-hidden="true"></div>
+
 <script>
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
-      var target = document.getElementById(this.getAttribute('href').slice(1));
-      if (target) { target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      var targetId = this.getAttribute('href').slice(1);
       var menu = document.querySelector('.mobile-nav');
       var toggle = document.querySelector('.nav-toggle');
+      var wasOpen = menu && menu.classList.contains('open');
       if (menu) menu.classList.remove('open');
       if (toggle) toggle.classList.remove('active');
+
+      function doScroll(){
+        var target = document.getElementById(targetId);
+        if (target) { target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+
+      if (wasOpen) { setTimeout(doScroll, 260); } else { doScroll(); }
     });
   });
 </script>
