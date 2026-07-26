@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domácí hlídání psů | Struhařov u Říčan | U druhé misky</title>
+<meta name="description" content="Když váš pes nemůže být doma s vámi, může být doma u nás. Domácí hlídání psů v rodinném prostředí s velkou zahradou a individuální péčí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E4;
+    --cream-2:#EFE8D6;
+    --ink:#2B2118;
+    --ink-soft:#5A4E3F;
+    --moss:#4B5D3A;
+    --moss-dark:#374429;
+    --ochre:#C68A2E;
+    --clay:#A65A3D;
+    --line:#DBCFB2;
+    --paw:#C9BC9C;
+    --white:#FFFEFB;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 .4em 0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- header ---------- */
+  header{padding:24px 0; border-bottom:1px solid var(--line);}
+  .header-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:flex-end; gap:12px;}
+  .brand-mark{font-family:'Fraunces', serif; font-weight:600; font-size:21px; line-height:1; display:inline-block; transform:translateY(3px);}
+  nav{display:flex; gap:24px; font-size:14.5px;}
+
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:30px; height:24px; background:none; border:none; cursor:pointer; padding:0;
+  }
+  .nav-toggle span{display:block; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:transform .2s ease, opacity .2s ease;}
+  .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.active span:nth-child(2){opacity:0;}
+  .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-nav{display:none;}
+  nav a{text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .15s, color .15s;}
+  nav a:hover{color:var(--moss-dark); border-color:var(--moss-dark);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:104px 0 20px;}
+  .hero-top{display:grid; grid-template-columns:1.5fr 1fr; gap:44px; align-items:center;}
+  .hero-copy{text-align:left;}
+  .hero-eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--clay); margin-bottom:16px;
+  }
+  .hero-kw{font-family:'Fraunces', serif; font-weight:500; font-size:20px; color:var(--ink-soft); margin:0 0 38px; letter-spacing:.01em;}
+  .hero-tagline{font-size:clamp(32px,4.4vw,50px); line-height:1.2; font-family:'Fraunces', serif; font-weight:600; color:var(--ink); margin:0;}
+  .hero p.lead{max-width:46ch; font-size:18px; color:var(--ink-soft); margin:38px 0 0;}
+  .lead-emphasis{font-weight:400; color:inherit;}
+  .hero-cta{margin-top:48px;}
+  .hero-photo.photo-slot{aspect-ratio:6/5;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--moss); color:var(--cream);
+    text-decoration:none; padding:13px 26px; border-radius:6px; font-size:15.5px; font-weight:500;
+    transition:background .15s, transform .15s; border:none; cursor:pointer;
+  }
+  .btn:hover{background:var(--moss-dark); transform:translateY(-1px);}
+  .btn-ghost{color:var(--ink); background:transparent; border:1px solid var(--ink); padding:12px 24px;}
+  .btn-ghost:hover{background:var(--ink); color:var(--cream);}
+
+  .trust-heading{
+    text-align:center; font-size:26px; margin:56px 0 22px;
+  }
+  .trust-row{
+    display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin:0 auto 8px;
+    padding:22px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    max-width:420px; width:fit-content;
+  }
+  .trust-item{display:flex; align-items:center; gap:8px; font-size:14.5px; color:var(--ink-soft);}
+  .trust-item svg{flex-shrink:0;}
+
+  /* ---------- photo / illustration slots ---------- */
+  .photo-pair{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:64px auto; max-width:640px;}
+  .photo-slot{
+    border-radius:12px; overflow:hidden; aspect-ratio:4/3; background:var(--cream-2);
+    border:1px solid var(--line); position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .photo-slot svg{width:100%; height:100%;}
+  .photo-slot img{width:100%; height:100%; object-fit:cover; display:block;}
+  .photo-slot .swap-label{
+    position:absolute; bottom:10px; left:10px; font-family:'JetBrains Mono',monospace;
+    font-size:10.5px; letter-spacing:.06em; color:var(--ink-soft); background:rgba(246,241,228,.88);
+    padding:4px 8px; border-radius:100px; border:1px solid var(--line);
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:8px 0 32px;}
+  .section-head{display:flex; flex-direction:column; gap:8px; margin-bottom:30px;}
+  .section-num{font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--ink-soft); letter-spacing:.08em;}
+
+  /* ---------- o nas ---------- */
+  .about-grid{display:grid; grid-template-columns:1fr 260px; gap:40px; align-items:stretch;}
+  .about-grid p{color:var(--ink-soft); font-size:16.5px;}
+  .about-grid p + p{margin-top:14px;}
+  .about-photo{border-radius:12px; aspect-ratio:auto; height:100%;}
+
+  /* ---------- day list ---------- */
+  .day-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px;}
+  .day-card{
+    border:1px solid var(--line); border-radius:10px; padding:22px 20px; background:var(--white);
+    display:flex; gap:14px; align-items:flex-start;
+  }
+  .day-card .icon{width:30px; height:30px; flex-shrink:0; margin-top:2px;}
+  .day-card h3{font-size:16.5px; margin-bottom:4px;}
+  .day-card p{margin:0; font-size:14.5px; color:var(--ink-soft);}
+
+  /* ---------- sluzby ---------- */
+  .services{display:grid; grid-template-columns:repeat(2, 1fr); gap:22px;}
+  .service-card{border:1px solid var(--line); border-radius:10px; padding:26px 22px; background:var(--white);}
+  .service-card .eyebrow-num{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--clay); letter-spacing:.08em; margin-bottom:10px; display:block;
+  }
+  .service-card h3{font-size:20px; margin-bottom:8px;}
+  .service-card p{color:var(--ink-soft); font-size:15px; margin:0;}
+
+  /* ---------- proces ---------- */
+  .process{counter-reset:step; display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .step{position:relative; padding-top:8px;}
+  .step::before{
+    counter-increment:step; content:counter(step, decimal-leading-zero);
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--ochre);
+    display:block; margin-bottom:10px; letter-spacing:.05em;
+  }
+  .step p{margin:0; font-size:15px; color:var(--ink-soft);}
+
+  /* ---------- tags ---------- */
+  .tag-list{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    font-size:14px; padding:7px 14px; border-radius:100px; background:var(--cream-2);
+    border:1px solid var(--line); color:var(--ink);
+  }
+
+  /* ---------- cenik ---------- */
+  .price-board{background:var(--moss-dark); color:var(--cream); border-radius:12px; padding:40px 36px;}
+  .price-board .section-head{margin-bottom:22px;}
+  .price-board h2{color:var(--cream);}
+  .price-board .section-num{color:var(--paw);}
+  .price-list{list-style:none; margin:0; padding:0;}
+  .price-list li{display:flex; align-items:baseline; gap:10px; padding:13px 0; border-bottom:1px solid rgba(246,241,228,.14); font-size:16.5px;}
+  .price-list li:last-child{border-bottom:none;}
+  .price-list .name{white-space:nowrap;}
+  .price-list .leader{flex:1; border-bottom:1px dotted rgba(246,241,228,.4); transform:translateY(-5px);}
+  .price-list .amount{font-family:'JetBrains Mono', monospace; font-weight:500; white-space:nowrap; color:var(--ochre); font-size:16.5px;}
+  .price-note{margin-top:22px; font-size:14px; color:var(--paw);}
+
+  /* ---------- poznejme se callout ---------- */
+  .callout{
+    border:1px solid var(--line); border-radius:12px; padding:36px 34px; background:var(--cream-2);
+    display:flex; gap:26px; align-items:center; flex-wrap:wrap;
+  }
+  .callout .icon-big{width:52px; height:52px; flex-shrink:0;}
+  .callout h2{font-size:24px; margin-bottom:8px;}
+  .callout p{margin:0; color:var(--ink-soft); font-size:15.5px; max-width:56ch;}
+
+  /* ---------- kontakt ---------- */
+  .contact-box{border:1px solid var(--line); border-radius:12px; padding:44px 40px; text-align:center; background:var(--white);}
+  .contact-box h2{font-size:30px;}
+  .contact-box p{color:var(--ink-soft); max-width:44ch; margin:12px auto 26px;}
+  .contact-detail{
+    font-family:'JetBrains Mono', monospace; font-size:15px; color:var(--ink);
+    margin-top:24px; display:flex; justify-content:center; gap:30px; flex-wrap:wrap;
+  }
+  .contact-detail a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color .15s;}
+  .contact-detail a:hover{border-color:var(--ink);}
+
+  footer{padding:30px 24px 50px; text-align:center; color:var(--ink-soft); font-size:13.5px; max-width:600px; margin:0 auto; line-height:1.6;}
+
+  @media (max-width:760px){
+    .hero-top{grid-template-columns:1fr; gap:56px;}
+    .hero{padding:56px 0 20px;}
+    .price-list li{flex-direction:column; align-items:flex-start; gap:2px;}
+    .price-list .leader{display:none;}
+    .hero-cta{text-align:center;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo{order:-1; aspect-ratio:4/3; max-width:480px; margin:0 auto;}
+    .services{grid-template-columns:1fr;}
+    .day-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr 1fr;}
+    .photo-pair{grid-template-columns:1fr;}
+    .photo-pair .photo-slot:first-child{display:none;}
+    nav{display:none;}
+    .nav-toggle{display:flex;}
+    .mobile-nav{
+      display:flex; flex-direction:column; max-height:0; overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    .mobile-nav.open{max-height:300px; border-top:1px solid var(--line);}
+    .mobile-nav a{
+      padding:16px 28px; border-bottom:1px solid var(--line); text-decoration:none;
+      color:var(--ink-soft); font-size:15px;
+    }
+    .price-board{padding:30px 22px;}
+    .contact-box{padding:34px 22px;}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} .btn{transition:none;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="brand">
+      <svg width="34" height="26" viewBox="0 0 34 26" fill="none" aria-hidden="true">
+        <ellipse cx="9" cy="19" rx="8" ry="5.5" stroke="#4B5D3A" stroke-width="1.6"/>
+        <ellipse cx="9" cy="17" rx="8" ry="5.5" fill="#F6F1E4" stroke="#4B5D3A" stroke-width="1.6"/>
+        <ellipse cx="25" cy="19" rx="8" ry="5.5" stroke="#A65A3D" stroke-width="1.6"/>
+        <ellipse cx="25" cy="17" rx="8" ry="5.5" fill="#F6F1E4" stroke="#A65A3D" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-mark">U druhé misky</span>
+    </div>
+    <nav>
+      <a href="#o-nas">O nás</a>
+      <a href="#sluzby">Služby</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Otevřít menu" onclick="document.querySelector('.mobile-nav').classList.toggle('open'); this.classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#o-nas">O nás</a>
+    <a href="#sluzby">Služby</a>
+    <a href="#cenik">Ceník</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-copy">
+        <h1 class="hero-kw">Domácí hlídání psů ve Struhařově u Říčan</h1>
+        <p class="hero-tagline">Když váš pes nemůže<br>být doma s vámi,<br>může být doma u nás.</p>
+        <p class="lead">
+          Zatímco jste v práci nebo na dovolené, váš pes prožije den podle
+          svých potřeb &mdash; na zahradě, na procházce nebo odpočinkem.
+          <span class="lead-emphasis">Protože váš pes u nás nemusí jen
+          čekat.</span>
+        </p>
+        <div class="hero-cta">
+          <a href="mailto:udruhemisky@gmail.com" class="btn">Rezervovat hlídání</a>
+        </div>
+      </div>
+      <div class="hero-photo photo-slot">
+        <img src="images/foto-hero.png" alt="Pes a kočka u nás na dvoře">
+      </div>
+    </div>
+
+    <h3 class="trust-heading">Proč nám majitelé svěřují své psy</h3>
+    <div class="trust-row">
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 3" stroke="#4B5D3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Rodinný dům místo kotců
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 3" stroke="#4B5D3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        1 500 m² oplocené zahrady
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 3" stroke="#4B5D3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Péče přizpůsobená každému psovi
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 3" stroke="#4B5D3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Fotky a videa z průběhu hlídání
+      </div>
+      <div class="trust-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 3" stroke="#4B5D3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Před prvním hlídáním se vždy poznáme osobně
+      </div>
+    </div>
+
+    <!-- FOTO/ILUSTRACE 1 a 2 — nahraď <img src="tvoje-foto.jpg"> místo SVG uvnitř .photo-slot -->
+    <div class="photo-pair">
+      <div class="photo-slot">
+        <img src="images/foto-zahrada.png" alt="Psi odpočívají na zahradě">
+      </div>
+      <div class="photo-slot">
+        <img src="images/foto-prochazka.png" alt="Psi na procházce v lese">
+      </div>
+    </div>
+  </section>
+
+  <section id="o-nas">
+    <div class="section-head">
+      <h2>Když jste pryč vy, váš pes nemusí být jen &bdquo;někde&ldquo;</h2>
+      <span class="section-num">01 / o nás</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>
+          Máme rodinný dům s 1 500 m² oplocené zahrady ve Struhařově, 25 km od
+          Prahy. Hned za domem začínají lesy, polní cesty a rybníky, takže máme
+          spoustu možností, kam se psy vyrazit.
+        </p>
+        <p>
+          Doma nám dělají společnost dvě feny &mdash; desetiletá bullmastifka
+          a mladá fenka českého horského psa. Díky nim dobře víme, že každý pes
+          potřebuje něco jiného. Někdo chce běhat, hrát si a objevovat okolí.
+          Jiný je nejspokojenější, když může část dne v klidu odpočívat a jen
+          pozorovat dění kolem.
+        </p>
+        <p>
+          Věříme, že hlídání nemá být jen o čekání na návrat majitele. Chceme,
+          abyste mohli odjet s klidnou hlavou a věděli, že váš pes tráví den
+          bezpečně, v domácím prostředí a způsobem, který mu vyhovuje.
+        </p>
+      </div>
+      <div class="photo-slot about-photo">
+        <img src="images/foto-smecka.png" alt="Naše smečka na procházce">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Jak bude vypadat den vašeho psa</h2>
+      <span class="section-num">02 / denní program</span>
+    </div>
+    <div class="day-grid">
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#4B5D3A" stroke-width="1.6" stroke-linecap="round"><path d="M4 21V8M4 8l2.5-3L9 8M9 21V8M9 8l2.5-3L14 8M14 21V8M14 8l2.5-3L19 8M19 21V8M2 12h19M2 17h19"/></svg>
+        <div><h3>1 500 m² oplocené zahrady</h3><p>Dostatek prostoru pro pohyb, hraní i odpočinek.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#4B5D3A" stroke-width="1.6"><path d="M4 20c3-8 6-13 8-13s5 5 8 13"/><circle cx="12" cy="5" r="2.2"/></svg>
+        <div><h3>Procházky v okolní přírodě</h3><p>Lesy, polní cesty a rybníky máme hned za domem.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#A65A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.3"/><circle cx="18.5" cy="17.5" r="3.3"/><path d="M5.5 17.5L9.5 9h3l3.5 8.5M9.5 9l1.8-2.5h2.4"/></svg>
+        <div><h3>Delší výpravy pro aktivní psy</h3><p>Podle kondice a zvyklostí psa můžeme vyrazit i na delší trasu nebo vedle kola.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#4B5D3A" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+        <div><h3>Klidnější režim pro starší psy</h3><p>Ne každý pes potřebuje celodenní program. Klid, odpočinek a kratší procházky jsou stejně v pořádku.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="#4B5D3A" stroke="none"><circle cx="7" cy="14.5" r="3" opacity="0.9"/><circle cx="3.6" cy="9.2" r="1.3"/><circle cx="6.6" cy="7.2" r="1.3"/><circle cx="9.6" cy="7.8" r="1.3"/><circle cx="16.5" cy="16.5" r="2.3" opacity="0.5"/><circle cx="14.1" cy="13.1" r="1" opacity="0.5"/><circle cx="16.1" cy="11.6" r="1" opacity="0.5"/><circle cx="18.5" cy="12.1" r="1" opacity="0.5"/></svg>
+        <div><h3>Kontakt s ostatními psy</h3><p>Společný čas přizpůsobujeme vzájemné snášenlivosti a tomu, co je každému psovi příjemné.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#A65A3D" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.6"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+        <div><h3>Fotky a videa během hlídání</h3><p>Průběžně uvidíte, jak se váš pes má a co právě dělá.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#A65A3D" stroke-width="1.6"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <div><h3>Bezpečnost na prvním místě</h3><p>Na delších procházkách můžeme psa vybavit GPS trackerem pro ještě větší bezpečí.</p></div>
+      </div>
+      <div class="day-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#4B5D3A" stroke-width="1.6"><circle cx="7" cy="9" r="2.6" fill="#4B5D3A" stroke="none"/><circle cx="17" cy="9" r="2.6" fill="#4B5D3A" stroke="none"/><circle cx="7" cy="17" r="2.6"/><circle cx="17" cy="17" r="2.6"/></svg>
+        <div><h3>Hlídáme jen omezený počet psů</h3><p>Bereme jen tolik psů, kolika se můžeme opravdu věnovat. Díky tomu má každý dostatek prostoru i individuální péče.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sluzby">
+    <div class="section-head">
+      <h2>Služby</h2>
+      <span class="section-num">03 / co nabízíme</span>
+    </div>
+    <div class="services">
+      <div class="service-card">
+        <span class="eyebrow-num">Přes den</span>
+        <h3>Denní hlídání</h3>
+        <p>Ideální pro pracovní dny nebo situace, kdy by měl pes zůstat příliš dlouho doma sám. Den tráví v domácím prostředí, na zahradě nebo na procházkách &mdash; podle jeho věku, kondice a povahy.</p>
+      </div>
+      <div class="service-card">
+        <span class="eyebrow-num">Přes noc</span>
+        <h3>Hlídání s noclehem</h3>
+        <p>Péče během víkendu, dovolené nebo pracovní cesty. Váš pes se stane součástí našeho běžného dne &mdash; pohyb, odpočinek, krmení podle vašich instrukcí a dohled po celou dobu pobytu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Jak probíhá první hlídání</h2>
+      <span class="section-num">04 / postup</span>
+    </div>
+    <div class="process">
+      <div class="step"><p>Ozvete se nám telefonicky nebo e-mailem.</p></div>
+      <div class="step"><p>Krátce si popovídáme o vašem psovi, jeho povaze, zdraví a zvyklostech.</p></div>
+      <div class="step"><p>Domluvíme seznamovací procházku nebo návštěvu.</p></div>
+      <div class="step"><p>Pokud si všechno sedne, rezervujeme termín hlídání.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Co potřebujeme vědět předem</h2>
+      <span class="section-num">05 / před prvním hlídáním</span>
+    </div>
+    <div class="tag-list">
+      <span class="tag">věk psa</span>
+      <span class="tag">plemeno</span>
+      <span class="tag">snášenlivost s ostatními psy</span>
+      <span class="tag">zdravotní omezení</span>
+      <span class="tag">léky</span>
+      <span class="tag">kastrace</span>
+      <span class="tag">zvyklosti</span>
+      <span class="tag">krmení</span>
+    </div>
+  </section>
+
+  <section id="cenik">
+    <div class="price-board">
+      <div class="section-head">
+        <h2>Ceník</h2>
+        <span class="section-num">06 / ceník</span>
+      </div>
+      <ul class="price-list">
+        <li><span class="name">Denní hlídání</span><span class="leader"></span><span class="amount">500 Kč / den</span></li>
+        <li><span class="name">Denní víkendové hlídání</span><span class="leader"></span><span class="amount">600 Kč / den</span></li>
+        <li><span class="name">Hlídání s noclehem</span><span class="leader"></span><span class="amount">700 Kč / den</span></li>
+        <li><span class="name">Víkendové hlídání s noclehem</span><span class="leader"></span><span class="amount">800 Kč / den</span></li>
+      </ul>
+      <p class="price-note">
+        Součástí denního i pobytového hlídání je pobyt na zahradě, procházky
+        i individuální péče podle potřeb psa. Potřebujete jiný režim nebo
+        délku hlídání? Na konkrétní podobě péče se můžeme individuálně
+        domluvit. Krmivo si každý pes přináší vlastní &mdash; zůstává tak na
+        své obvyklé stravě a vyhneme se zbytečným trávicím potížím spojeným
+        s její změnou.
+      </p>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="section-num" style="text-align:center; display:block; margin-bottom:16px;">07 / kontakt</div>
+    <div class="contact-box">
+      <h2>Pojďme se nejdříve poznat</h2>
+      <p>
+        Než nám svého psa svěříte, rádi se s vámi potkáme na krátké
+        seznamovací procházce nebo návštěvě.
+        <br><br>
+        První společná návštěva je nezávazná. Vy poznáte nás, my vašeho psa
+        a společně zjistíme, jestli mu bude pobyt U druhé misky vyhovovat.
+      </p>
+      <a href="mailto:udruhemisky@gmail.com" class="btn">Rezervovat hlídání</a>
+      <div class="contact-detail">
+        <a href="tel:+420735826304">+420 735 826 304</a>
+        <a href="mailto:udruhemisky@gmail.com">udruhemisky@gmail.com</a>
+        <span>Struhařov, 251 64, Praha-východ</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  U druhé misky &middot; domácí hlídání psů &middot; Struhařov u Říčan
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.getElementById(this.getAttribute('href').slice(1));
+      if (target) { target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      var menu = document.querySelector('.mobile-nav');
+      var toggle = document.querySelector('.nav-toggle');
+      if (menu) menu.classList.remove('open');
+      if (toggle) toggle.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
