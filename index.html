@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Domácí hlídání psů | Struhařov u Říčan | U druhé misky</title>
 <meta name="description" content="Když váš pes nemůže být doma s vámi, může být doma u nás. Domácí hlídání psů v rodinném prostředí s velkou zahradou a individuální péčí.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TBBL8MQYC6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TBBL8MQYC6');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -488,6 +496,31 @@
 <div class="bottom-spacer" aria-hidden="true"></div>
 
 <script>
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('a');
+    if (!link || !window.gtag) return;
+
+    var href = link.getAttribute('href') || '';
+    var eventName = '';
+
+    if (href.indexOf('tel:') === 0) {
+      eventName = 'phone_click';
+    } else if (href.indexOf('mailto:') === 0 && link.classList.contains('btn')) {
+      eventName = 'reservation_cta_click';
+    } else if (href.indexOf('mailto:') === 0) {
+      eventName = 'email_click';
+    }
+
+    if (!eventName) return;
+
+    var section = link.closest('section');
+    gtag('event', eventName, {
+      link_text: link.textContent.trim(),
+      link_url: href,
+      link_section: section && section.id ? section.id : 'hero'
+    });
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
