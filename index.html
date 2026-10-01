@@ -76,16 +76,10 @@
   .hero{padding:104px 0 20px;}
   .hero-top{display:grid; grid-template-columns:1.5fr 1fr; gap:44px; align-items:center;}
   .hero-copy{text-align:left;}
-  .hero-eyebrow{
-    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--clay); margin-bottom:16px;
-  }
-  .hero-kw{font-family:'Fraunces', serif; font-weight:500; font-size:20px; color:var(--ink-soft); margin:0 0 38px; letter-spacing:.01em;}
-  .hero-tagline{font-size:clamp(32px,4.4vw,50px); line-height:1.2; font-family:'Fraunces', serif; font-weight:600; color:var(--ink); margin:0;}
-  .hero p.lead{max-width:46ch; font-size:18px; color:var(--ink-soft); margin:38px 0 0;}
-  .lead-emphasis{font-weight:400; color:inherit;}
-  .hero-cta{margin-top:48px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
-  .hero-photo.photo-slot{aspect-ratio:6/5;}
+  .hero-title{font-size:clamp(36px,4.4vw,50px); line-height:1.14; margin:0;}
+  .hero-support{max-width:42ch; font-size:18px; color:var(--ink-soft); margin:24px 0 0;}
+  .hero-cta{margin-top:34px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+  .hero-photo.photo-slot{aspect-ratio:802/653;}
   .btn{
     display:inline-flex; align-items:center; gap:8px; background:var(--moss); color:var(--cream);
     text-decoration:none; padding:13px 26px; border-radius:6px; font-size:15.5px; font-weight:500;
@@ -107,7 +101,14 @@
   .trust-item svg{flex-shrink:0;}
 
   /* ---------- photo / illustration slots ---------- */
-  .photo-pair{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:64px auto; max-width:640px;}
+  .visual-sequence{
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;
+    margin:64px auto 0;
+  }
+  .sequence-photo{width:min(100%,312px);}
+  .sequence-photo--garden{grid-column:1; grid-row:1; justify-self:end;}
+  .sequence-photo--walk{grid-column:2; grid-row:1; justify-self:start;}
+  .visual-sequence #o-nas{grid-column:1 / -1; grid-row:2; padding-top:64px;}
   .photo-slot{
     border-radius:12px; overflow:hidden; aspect-ratio:4/3; background:var(--cream-2);
     border:1px solid var(--line); position:relative; display:flex; align-items:center; justify-content:center;
@@ -204,21 +205,31 @@
   .bottom-spacer{height:45vh;}
 
   @media (max-width:760px){
-    .hero-top{grid-template-columns:1fr; gap:56px;}
-    .hero{padding:56px 0 20px;}
+    .wrap{padding-left:16px; padding-right:16px;}
+    header{padding:20px 0;}
+    .hero{padding:18px 0 10px;}
+    .hero-top{grid-template-columns:1fr; gap:24px;}
+    .hero-photo{order:-1; width:100%;}
+    .hero-title{font-size:clamp(29px,8.2vw,34px); line-height:1.13;}
+    .hero-support{font-size:16.5px; line-height:1.5; margin-top:14px;}
     .price-list li{flex-direction:column; align-items:flex-start; gap:2px;}
     .price-list .leader{display:none;}
     .hero-cta{
-      width:min(100%, 320px); margin:42px auto 0; flex-direction:column; align-items:stretch;
+      width:100%; margin:22px 0 0; flex-direction:column; align-items:stretch;
     }
     .hero-cta .btn{justify-content:center; width:100%;}
+    .trust-heading{text-align:left; font-size:24px; margin:46px 0 18px;}
+    .trust-row{max-width:none; width:100%; margin-bottom:0; padding:18px 0;}
+    .visual-sequence{grid-template-columns:1fr; gap:0; margin-top:44px;}
+    .sequence-photo{width:100%; justify-self:stretch;}
+    .sequence-photo--garden{grid-column:1; grid-row:auto; margin-bottom:52px;}
+    .visual-sequence #o-nas{grid-column:1; grid-row:auto; padding:0 0 32px;}
+    .sequence-photo--walk{grid-column:1; grid-row:auto; margin:8px 0 44px;}
     .about-grid{grid-template-columns:1fr;}
-    .about-photo{order:-1; aspect-ratio:4/3; max-width:480px; margin:0 auto;}
+    .about-photo{display:none;}
     .services{grid-template-columns:1fr;}
     .day-grid{grid-template-columns:1fr;}
     .process{grid-template-columns:1fr 1fr;}
-    .photo-pair{grid-template-columns:1fr;}
-    .photo-pair .photo-slot:first-child{display:none;}
     nav{display:none;}
     .nav-toggle{display:flex;}
     .mobile-nav{
@@ -274,21 +285,21 @@
   <section class="hero">
     <div class="hero-top">
       <div class="hero-copy">
-        <h1 class="hero-kw">Domácí hlídání psů ve Struhařově u Říčan</h1>
-        <p class="hero-tagline">Když váš pes nemůže<br>být doma s vámi,<br>může být doma u nás.</p>
-        <p class="lead">
-          Zatímco jste v práci nebo na dovolené, váš pes prožije den podle
-          svých potřeb &mdash; na zahradě, na procházce nebo odpočinkem.
-          <span class="lead-emphasis">Protože váš pes u nás nemusí jen
-          čekat.</span>
-        </p>
+        <h1 class="hero-title">Domácí hlídání psů u Říčan, kde budou jako doma.</h1>
+        <p class="hero-support">Rodinný dům, 1 500 m² oplocené zahrady a péče jen o omezený počet psů.</p>
         <div class="hero-cta">
           <a href="mailto:udruhemisky@gmail.com" class="btn">Ověřit volný termín</a>
           <a href="tel:+420735826304" class="btn btn-ghost">Zavolat</a>
         </div>
       </div>
       <div class="hero-photo photo-slot">
-        <img src="foto-hero.png" alt="Pes a kočka u nás na dvoře">
+        <img
+          src="foto-hero-802.jpg"
+          srcset="foto-hero-480.jpg 480w, foto-hero-802.jpg 802w"
+          sizes="(max-width: 760px) calc(100vw - 32px), 40vw"
+          width="802" height="653"
+          alt="Pes a kočka u nás na dvoře"
+          loading="eager" decoding="async" fetchpriority="high">
       </div>
     </div>
 
@@ -316,47 +327,48 @@
       </div>
     </div>
 
-    <!-- FOTO/ILUSTRACE 1 a 2 — nahraď <img src="tvoje-foto.jpg"> místo SVG uvnitř .photo-slot -->
-    <div class="photo-pair">
-      <div class="photo-slot">
-        <img src="foto-zahrada.png" alt="Psi odpočívají na zahradě">
-      </div>
-      <div class="photo-slot">
-        <img src="foto-prochazka.png" alt="Psi na procházce v lese">
-      </div>
-    </div>
   </section>
 
-  <section id="o-nas">
-    <div class="section-head">
-      <h2>Když jste pryč vy, váš pes nemusí být jen &bdquo;někde&ldquo;</h2>
-      <span class="section-num">01 / o nás</span>
+  <div class="visual-sequence">
+    <div class="photo-slot sequence-photo sequence-photo--garden">
+      <img src="foto-zahrada.png" width="1179" height="838" loading="lazy" decoding="async" alt="Psi odpočívají na zahradě">
     </div>
-    <div class="about-grid">
-      <div>
-        <p>
-          Máme rodinný dům s 1 500 m² oplocené zahrady ve Struhařově, 25 km od
-          Prahy. Hned za domem začínají lesy, polní cesty a rybníky, takže máme
-          spoustu možností, kam se psy vyrazit.
-        </p>
-        <p>
-          Doma nám dělají společnost dvě feny &mdash; desetiletá bullmastifka
-          a mladá fenka českého horského psa. Díky nim dobře víme, že každý pes
-          potřebuje něco jiného. Někdo chce běhat, hrát si a objevovat okolí.
-          Jiný je nejspokojenější, když může část dne v klidu odpočívat a jen
-          pozorovat dění kolem.
-        </p>
-        <p>
-          Věříme, že hlídání nemá být jen o čekání na návrat majitele. Chceme,
-          abyste mohli odjet s klidnou hlavou a věděli, že váš pes tráví den
-          bezpečně, v domácím prostředí a způsobem, který mu vyhovuje.
-        </p>
+
+    <section id="o-nas">
+      <div class="section-head">
+        <h2>Když jste pryč vy, váš pes nemusí být jen &bdquo;někde&ldquo;</h2>
+        <span class="section-num">01 / o nás</span>
       </div>
-      <div class="photo-slot about-photo">
-        <img src="foto-smecka.png" alt="Naše smečka na procházce">
+      <div class="about-grid">
+        <div>
+          <p>
+            Máme rodinný dům s 1 500 m² oplocené zahrady ve Struhařově, 25 km od
+            Prahy. Hned za domem začínají lesy, polní cesty a rybníky, takže máme
+            spoustu možností, kam se psy vyrazit.
+          </p>
+          <p>
+            Doma nám dělají společnost dvě feny &mdash; desetiletá bullmastifka
+            a mladá fenka českého horského psa. Díky nim dobře víme, že každý pes
+            potřebuje něco jiného. Někdo chce běhat, hrát si a objevovat okolí.
+            Jiný je nejspokojenější, když může část dne v klidu odpočívat a jen
+            pozorovat dění kolem.
+          </p>
+          <p>
+            Věříme, že hlídání nemá být jen o čekání na návrat majitele. Chceme,
+            abyste mohli odjet s klidnou hlavou a věděli, že váš pes tráví den
+            bezpečně, v domácím prostředí a způsobem, který mu vyhovuje.
+          </p>
+        </div>
+        <div class="photo-slot about-photo">
+          <img src="foto-smecka.png" width="987" height="1046" loading="lazy" decoding="async" alt="Naše smečka na procházce">
+        </div>
       </div>
+    </section>
+
+    <div class="photo-slot sequence-photo sequence-photo--walk">
+      <img src="foto-prochazka.png" width="870" height="707" loading="lazy" decoding="async" alt="Psi na procházce v lese">
     </div>
-  </section>
+  </div>
 
   <section>
     <div class="section-head">
