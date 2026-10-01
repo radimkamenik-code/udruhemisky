@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Domácí hlídání psů | Struhařov u Říčan | U druhé misky</title>
 <meta name="description" content="Když váš pes nemůže být doma s vámi, může být doma u nás. Domácí hlídání psů v rodinném prostředí s velkou zahradou a individuální péčí.">
+<link rel="canonical" href="https://udruhemisky.cz/">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TBBL8MQYC6"></script>
 <script>
@@ -83,7 +84,7 @@
   .hero-tagline{font-size:clamp(32px,4.4vw,50px); line-height:1.2; font-family:'Fraunces', serif; font-weight:600; color:var(--ink); margin:0;}
   .hero p.lead{max-width:46ch; font-size:18px; color:var(--ink-soft); margin:38px 0 0;}
   .lead-emphasis{font-weight:400; color:inherit;}
-  .hero-cta{margin-top:48px;}
+  .hero-cta{margin-top:48px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
   .hero-photo.photo-slot{aspect-ratio:6/5;}
   .btn{
     display:inline-flex; align-items:center; gap:8px; background:var(--moss); color:var(--cream);
@@ -207,7 +208,10 @@
     .hero{padding:56px 0 20px;}
     .price-list li{flex-direction:column; align-items:flex-start; gap:2px;}
     .price-list .leader{display:none;}
-    .hero-cta{text-align:center;}
+    .hero-cta{
+      width:min(100%, 320px); margin:42px auto 0; flex-direction:column; align-items:stretch;
+    }
+    .hero-cta .btn{justify-content:center; width:100%;}
     .about-grid{grid-template-columns:1fr;}
     .about-photo{order:-1; aspect-ratio:4/3; max-width:480px; margin:0 auto;}
     .services{grid-template-columns:1fr;}
@@ -279,7 +283,8 @@
           čekat.</span>
         </p>
         <div class="hero-cta">
-          <a href="mailto:udruhemisky@gmail.com" class="btn">Rezervovat hlídání</a>
+          <a href="mailto:udruhemisky@gmail.com" class="btn">Ověřit volný termín</a>
+          <a href="tel:+420735826304" class="btn btn-ghost">Zavolat</a>
         </div>
       </div>
       <div class="hero-photo photo-slot">
@@ -478,7 +483,7 @@
         První společná návštěva je nezávazná. Vy poznáte nás, my vašeho psa
         a společně zjistíme, jestli mu bude pobyt U druhé misky vyhovovat.
       </p>
-      <a href="mailto:udruhemisky@gmail.com" class="btn">Rezervovat hlídání</a>
+      <a href="mailto:udruhemisky@gmail.com" class="btn">Ověřit volný termín</a>
       <div class="contact-detail">
         <a href="tel:+420735826304">+420 735 826 304</a>
         <a href="mailto:udruhemisky@gmail.com">udruhemisky@gmail.com</a>
@@ -502,23 +507,36 @@
 
     var href = link.getAttribute('href') || '';
     var eventName = '';
+    var contactMethod = '';
 
     if (href.indexOf('tel:') === 0) {
       eventName = 'phone_click';
+      contactMethod = 'phone';
     } else if (href.indexOf('mailto:') === 0 && link.classList.contains('btn')) {
       eventName = 'reservation_cta_click';
+      contactMethod = 'reservation';
     } else if (href.indexOf('mailto:') === 0) {
       eventName = 'email_click';
+      contactMethod = 'email';
     }
 
     if (!eventName) return;
 
     var section = link.closest('section');
-    gtag('event', eventName, {
+    var eventParams = {
       link_text: link.textContent.trim(),
       link_url: href,
-      link_section: section && section.id ? section.id : 'hero'
-    });
+      link_section: section && section.id ? section.id : 'hero',
+      contact_method: contactMethod,
+      transport_type: 'beacon'
+    };
+
+    // Diagnostic event keeps the original contact-method detail.
+    gtag('event', eventName, eventParams);
+
+    // This is the single lead event used as the GA4/Google Ads conversion.
+    // The mutually exclusive branches above guarantee one contact_lead per click.
+    gtag('event', 'contact_lead', eventParams);
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
